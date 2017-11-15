@@ -307,13 +307,13 @@ export function init_canvas() {
         this.toY = (e.touches[0].clientY - this.canvas.height / 2) * 0.8;
       }.bind(this));
       window.addEventListener('mousedown', function(e) {
-        for (var i = 0; i < 100; i++) {
+        for (var i = 0; i < 10; i++) {
           this.add();
         }
       }.bind(this));
       window.addEventListener('touchstart', function(e) {
         e.preventDefault();
-        for (var i = 0; i < 100; i++) {
+        for (var i = 0; i < 10; i++) {
           this.add();
         }
       }.bind(this));

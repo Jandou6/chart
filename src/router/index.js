@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
-import Chart from '@/views/Chart';
+import Search from '@/views/Search';
+import Index from '@/views/Index';
 
 Vue.use(Router)
 
@@ -9,13 +10,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'index',
+      component: Index
     },
     {
       path: '/search',
-      name: 'chart',
-      component: Chart
+      name: 'search',
+      component: Search
     },
     {
       path: '/test_2',

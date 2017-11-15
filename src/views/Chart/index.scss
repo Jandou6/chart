@@ -1,0 +1,25 @@
+#view-chart {
+  min-height:100vh;
+  min-width:100vw;
+  display: flex;
+  flex-wrap:wrap;
+  flex-direction: column;
+  background-image: radial-gradient(ellipse farthest-corner at center top, #000d4d 0%, #000105 100%);
+  .main-body{
+    flex:1;
+    width:100%;
+    display: flex;
+    .left-area {
+      width:40%;
+      min-height:100vh;
+      .small-chart-wrap{
+        height:320px;
+        width:100%;
+      }
+    }
+    .right-area {
+      width:60%;
+      height:650px;
+    }
+  }
+}

@@ -1,6 +1,9 @@
 <template>
   <div class="bg-canvas-wrap">
-    <canvas id="canv"></canvas>
+    <div class="canvas-wrap">
+      <canvas id="canv"></canvas>
+    </div>
+    <slot></slot>
   </div>
 </template>
 

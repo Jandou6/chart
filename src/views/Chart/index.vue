@@ -9,7 +9,7 @@
   export default {
     data() {
       return {
-        content: '首页'
+        content: '第二页'
       }
     }
   }

@@ -1,4 +1,12 @@
 .bg-canvas-wrap {
-  background: #636871;
-  background-image: radial-gradient(ellipse farthest-corner at center top, #000d4d 0%, #000105 100%);
+  .canvas-wrap {
+    min-height: 100vh;
+    min-width: 100vw;
+    background: #636871;
+    background-image: radial-gradient(ellipse farthest-corner at center top, #000d4d 0%, #000105 100%);
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: -1;
+  }
 }

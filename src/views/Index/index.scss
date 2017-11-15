@@ -1,3 +1,16 @@
-* {
-  color: #f00;
+.body {
+  min-height:100vh;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  .mian-body {
+    flex:1;
+    font-size: 5vw;
+    #welcome-title {
+      color: #fff;
+      .link-to-search {
+        color: #fff;
+      }
+    }
+  }
 }

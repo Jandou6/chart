@@ -7,37 +7,6 @@
     }
     .content-wrap {
       flex-wrap: wrap;
-      .compay-name-input {
-        border:none;
-        height:60px;
-        background: transparent;
-        color:#fff;
-        font-size: 3vw;
-        border-bottom: 5px solid #fff;
-        padding: 5px;
-        width:380px;
-        text-align: center;
-      }
-      .enter-btn-wrap {
-        width:100%;
-        padding-top:40px;
-        .enter-btn {
-          width: 160px;
-          padding: 4px 12px;
-          border-radius: 6px;
-          height: 30px;
-          cursor: pointer;
-          &:hover {
-            background: #008fff;
-            border: none;
-            color:#fff;
-          }
-          &:active {
-            background: #0477d2;
-          }
-        }
-      }
     }
   }
-
 }

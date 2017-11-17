@@ -4,7 +4,7 @@
     <div class="main-body">
       <div class="left-area">
         <div class="small-chart-wrap">
-          <chart-bar></chart-bar>
+          <chart-radar></chart-radar>
         </div>
         <div class="small-chart-wrap">
           <chart-line></chart-line>
@@ -12,8 +12,8 @@
         <div class="small-chart-wrap">
           <chart-fan></chart-fan>
         </div>
-        <div class="small-chart-wrap">
-          <chart-radar></chart-radar>
+       <div class="small-chart-wrap">
+          <chart-bar></chart-bar>
         </div>
       </div>
       <div class="right-area">

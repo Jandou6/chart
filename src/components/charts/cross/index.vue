@@ -20,6 +20,10 @@ export default {
     init_chart: function() {
       const myChart = echarts.init(document.querySelector('.chart-cross'));
       myChart.setOption(option);
+      myChart.on('click', function (params) {
+          // 控制台打印数据的名称
+        console.log(params);
+      });
     }
   }
 }

@@ -4,7 +4,7 @@
     <div class="enter-btn-wrap vh-center">
       <button class="enter-btn " @click="btn_click">More</button>
     </div>
-    <div class="keyword-list-wrap vh-center">
+    <div class="keyword-list-wrap" :style="{display: keyword_list.length > 0 ? '': 'none'}">
       <ul class="keyword-list">
         <template v-for="(item, index) in keyword_list">
           <li :key='index' >

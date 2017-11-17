@@ -19,7 +19,7 @@
     }
     .right-area {
       width:60%;
-      height:650px;
+      height:calc(100vh - 80px);
     }
   }
 }

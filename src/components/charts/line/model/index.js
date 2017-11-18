@@ -77,7 +77,6 @@ export const option = {
 };
 
 export function get_data(stock_name='盛通股份', success_fn) {
-  console.log(stock_name);
   const url = `${Api_config.host}:${Api_config.port}${Api_config.get_line_data}`;
   const res = axios.post(url, {
     name: stock_name,

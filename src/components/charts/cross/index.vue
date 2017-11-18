@@ -11,7 +11,7 @@ require('echarts/lib/chart/scatter');
 require('echarts/lib/component/tooltip');
 require('echarts/lib/component/title');
 
-import {option} from './model';
+import {get_data} from './model';
 export default {
   mounted () {
     this.init_chart();
@@ -19,7 +19,11 @@ export default {
   methods: {
     init_chart: function() {
       const myChart = echarts.init(document.querySelector('.chart-cross'));
-      myChart.setOption(option);
+      
+       get_data((option) => {
+         console.log(option);
+         myChart.setOption(option);
+       });
       myChart.on('click', function (params) {
           // 控制台打印数据的名称
         console.log(params);

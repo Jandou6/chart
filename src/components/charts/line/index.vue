@@ -10,7 +10,8 @@ var echarts = require('echarts/lib/echarts');
 require('echarts/lib/chart/line');
 require('echarts/lib/component/tooltip');
 require('echarts/lib/component/title');
-require('echarts/lib/component/legend');
+require('echarts/lib/component/legend'); //visualMap
+require('echarts/lib/component/visualMap');
 import { get_data } from './model';
 export default {
   data() {

@@ -8,8 +8,8 @@
       <ul class="keyword-list">
         <template v-for="(item, index) in keyword_list">
           <li :key='index' >
-            <router-link :to="{ name: 'chartlist', params: { name: item.CompanyName}}">
-              {{item.CompanyName}}
+            <router-link :to="{ name: 'chartlist', params: { name: item.companyName}}">
+              {{item.companyName}}
             </router-link>
           </li>
         </template>

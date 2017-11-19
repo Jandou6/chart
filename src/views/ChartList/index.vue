@@ -7,7 +7,7 @@
           <template v-for="(chart, index) in chart_list">
             <li :key="index" class="list-item-wrap">
               <div class="chart-item vh-center">
-                <router-link :to="{ name: chart.link, params: { name:CompanyName}}">
+                <router-link :to="{ name: chart.link, params: { name:companyName}}">
                    {{chart.name}}
                 </router-link>
               </div>
@@ -30,7 +30,7 @@ import footerComponent from '../../components/common/footer';
 export default {
   data() {
     return {
-      CompanyName: this.$route.params.name,
+      companyName: this.$route.params.name,
       chart_list: [
         {
           name: 'General',
@@ -46,7 +46,7 @@ export default {
         },
         {
           name: '局部散点图',
-          link: 'cross',
+          link: 'local_cross',
         },
         {
           name: '全局散点图',

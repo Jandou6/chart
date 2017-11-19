@@ -5,4 +5,5 @@ export const Api_config = {
 
   get_line_data: '/chartData/line',
   get_cross_data: '/chartData/cross',
+  get_local_cross_data: '/chartData/crossLocal',
 }

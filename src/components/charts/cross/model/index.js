@@ -113,52 +113,42 @@ export const option = {
   //     }
   //   }
   // ],
-  series: [
-    {
-      name: '男性',
-      // color: '#f0f',
-      type: 'scatter',
-      data: [[174.0, 65.6]],
-      itemStyle: {
-        normal: {
-          color: '#B3E4A1'
-        }
-      },
-    },
-    {
-      name: '男性2',
-      type: 'scatter',
-      data: [[194.0, 75.6]],
-      itemStyle: {
-        normal: {
-          color: '#B3E4A1'
-        }
-      },
-    }
-  ]
+  series: []
 };
 
 export function get_data(success_fn) {
   const url = `${Api_config.host}:${Api_config.port}${Api_config.get_cross_data}`;
-  axios.post(url).then((res) => {
+  fetch_data(url, undefined, success_fn);
+}
+
+export function get_local_data(name, success_fn) {
+  const url = `${Api_config.host}:${Api_config.port}${Api_config.get_local_cross_data}`;
+  fetch_data(url, {name}, success_fn);
+}
+
+function fetch_data(url, body, success_fn) {
+  option.series = [];
+  axios.post(url, body).then((res) => {
     const data = res.data;
     const stock_cross_data = [];
-    
+
     if (!Array.isArray(data)) { return; }
     data.forEach((item, index) => {
       const debtToAssetsRatio = (parseFloat(item.debtToAssetsRatio) || 0) * 100;
+      const marketValue = item.marketValue / 100000000
       option.series[index] = {
-        name: item.CompanyName,
-        data: [[item.marketValue / 100000000, debtToAssetsRatio]],
+        name: item.companyName,
+        data: [[marketValue, debtToAssetsRatio]],
         type: 'scatter',
         itemStyle: {
           normal: {
-            color: '#B3E4A1'
+            color: (body && body.name === item.companyName) ? '#f00' : '#B3E4A1',
           }
         },
       }
     });
-    console.log(option);
     success_fn(option);
   })
 }
+
+

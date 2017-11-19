@@ -47,6 +47,11 @@ export default new Router({
       path: '/chartlist/:name',
       name: 'chartlist',
       component: ChartList
+    },
+    {
+      path: '/local_cross/:name',
+      name: 'local_cross',
+      component: Cross
     }
   ]
 })

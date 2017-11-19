@@ -11,14 +11,17 @@ require('echarts/lib/chart/radar');
 require('echarts/lib/component/tooltip');
 require('echarts/lib/component/title');
 
-import { option } from './model';
+import { option, get_max_data } from './model';
 export default {
   mounted () {
-    this.init_chart();
+    get_max_data();
+    setTimeout(this.init_chart, 0);
+    // this.init_chart();
   },
   methods: {
     init_chart: function() {
       const myChart = echarts.init(document.querySelector('.chart-radar'));
+      console.log(option);
       myChart.setOption(option);
     }
   }

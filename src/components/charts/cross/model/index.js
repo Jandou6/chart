@@ -141,7 +141,6 @@ export const option = {
 export function get_data(success_fn) {
   const url = `${Api_config.host}:${Api_config.port}${Api_config.get_cross_data}`;
   axios.post(url).then((res) => {
-    console.log(res.data);
     const data = res.data;
     const stock_cross_data = [];
     

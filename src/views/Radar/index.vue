@@ -2,17 +2,7 @@
   <div id="view-chart">
     <header-component></header-component>
     <div class="main-body">
-      <div class="left-area">
-        <div class="small-chart-wrap">
-          <chart-radar></chart-radar>
-        </div>
-        <div class="small-chart-wrap">
-          <chart-line></chart-line>
-        </div>
-      </div>
-      <div class="right-area">
-        <chart-cross></chart-cross>
-      </div>
+      <chart-radar></chart-radar>
     </div>
     <footer-component></footer-component>
   </div>
@@ -20,8 +10,6 @@
 
 <script>
 import './index.scss';
-import chartLine from '../../components/charts/line';
-import chartCross from '../../components/charts/cross';
 import chartRadar from '../../components/charts/radar';
 import headerComponent from '../../components/common/header';
 import footerComponent from '../../components/common/footer';
@@ -29,8 +17,6 @@ export default {
   components: {
     headerComponent,
     footerComponent,
-    chartLine,
-    chartCross,
     chartRadar,
   }
 }

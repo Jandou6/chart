@@ -14,8 +14,7 @@ require('echarts/lib/component/title');
 import { option, get_max_data } from './model';
 export default {
   mounted () {
-    get_max_data();
-    setTimeout(this.init_chart, 0);
+    get_max_data(this.$route.params.name, this.init_chart);
     // this.init_chart();
   },
   methods: {

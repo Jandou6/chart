@@ -39,7 +39,7 @@ export default new Router({
       component: Cross
     },
     {
-      path: '/radar',
+      path: '/radar/:name',
       name: 'radar',
       component: Radar
     },

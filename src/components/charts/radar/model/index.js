@@ -54,43 +54,58 @@ export const option = {
     ]
   }]
 };
-
-export function get_max_data() {
+let company_name = '';
+let success_call_fn = '';
+export function get_max_data(name, success_fn) {
+  // TODO: 连续调用请求太过繁琐，优化的时候，建议后端合并最大值的成为一个请求。
   get_max_market_value();
-  get_max_total_liabilities();
-  get_max_total_profit();
-  get_max_debt_to_assets_ratio();
-
+  success_call_fn = success_fn;
+  company_name = name;
 }
 
 function get_max_market_value() {
   const url = `${Api_config.host}:${Api_config.port}${Api_config.get_max_market_value}`;
-  axios.post(url).then((res) => {
-    const max = res.data[0].MaxmarketValue;
+  axios.get(url).then((res) => {
+    const max = res.data[0].MaxMarketValue;
     option.radar.indicator[0].max = max;
+    get_max_total_liabilities();
   });
 }
 
 function get_max_total_liabilities() {
   const url = `${Api_config.host}:${Api_config.port}${Api_config.get_max_total_liabilities}`;
-  axios.post(url).then((res) => {
+  axios.get(url).then((res) => {
     const max = res.data[0].MaxLiability;
     option.radar.indicator[1].max = max;
+    get_max_total_profit();
   });
 }
 
 function get_max_total_profit() {
   const url = `${Api_config.host}:${Api_config.port}${Api_config.get_max_total_profit}`;
-  axios.post(url).then((res) => {
-    const max = res.data[0].MaxLiability;
+  axios.get(url).then((res) => {
+    const max = res.data[0].maxTotalProfit;
     option.radar.indicator[2].max = max;
+    get_max_debt_to_assets_ratio();
   });
 }
 
-function get_max_debt_to_assets_ratio() {
+function get_max_debt_to_assets_ratio(cb) {
   const url = `${Api_config.host}:${Api_config.port}${Api_config.get_max_debt_to_assets_ratio}`;
-  axios.post(url).then((res) => {
+  axios.get(url).then((res) => {
     const max = res.data[0].MaxDebtToAssetsRatio;
-    option.radar.indicator[3].max = max;
+    option.radar.indicator[3].max = parseFloat(max);
+    get_company_specific(company_name);
   });
+}
+
+function get_company_specific(name) {
+  const url = `${Api_config.host}:${Api_config.port}${Api_config.get_company_specific}`;
+  axios.post(url, {
+    name,
+  }).then((res) => {
+    const data = res.data[0];
+    option.series[0].data[0].value = [data.marketValue, data.totalLiabilities, data.totalProfit, parseFloat(data.debtToAssetsRatio)];
+    success_call_fn(option);
+  })
 }

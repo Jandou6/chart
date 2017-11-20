@@ -6,6 +6,7 @@ export const Api_config = {
   get_line_data:                '/chartData/line',
   get_cross_data:               '/chartData/cross',
   get_local_cross_data:         '/chartData/crossLocal',
+  get_company_specific:         '/companySpecific',
 
   get_max_market_value:             '/data/maxMarketValue',
   get_max_total_liabilities:        '/data/maxTotalLiabilities',

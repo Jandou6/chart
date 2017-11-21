@@ -1,6 +1,5 @@
 <template>
   <div class="chart-radar">
-
   </div>
 </template>
 
@@ -10,6 +9,7 @@ var echarts = require('echarts/lib/echarts');
 require('echarts/lib/chart/radar');
 require('echarts/lib/component/tooltip');
 require('echarts/lib/component/title');
+import loading from '../../common/loading';
 
 import { option, get_max_data } from './model';
 export default {
@@ -23,6 +23,9 @@ export default {
       console.log(option);
       myChart.setOption(option);
     }
+  },
+  components: {
+    loading,
   }
 }
 </script>

@@ -1,6 +1,8 @@
 <template>
-  <div class="chart-cross">
-
+  <div class="wrap">
+    <loading :show="show_loading"></loading>
+    <div class="chart-cross"></div>
+    
   </div>
 </template>
 
@@ -10,11 +12,20 @@ var echarts = require('echarts/lib/echarts');
 require('echarts/lib/chart/scatter');
 require('echarts/lib/component/tooltip');
 require('echarts/lib/component/title');
-
+import loading from '../../common/loading';
 import {get_data, get_local_data} from './model';
 export default {
+  data() {
+    return {
+      show_loading: true,
+    }
+  },
   mounted () {
+    this.show_loading = true;
     this.init_chart();
+  },
+  components: {
+    loading,
   },
   methods: {
     init_chart: function() {
@@ -23,13 +34,14 @@ export default {
       if (name && this.$route.name !== 'cross') {
         get_local_data(name, (option) => {
           myChart.setOption(option);
+          this.show_loading = false;
         });
       } else {
         get_data((option) => {
           myChart.setOption(option);
+          this.show_loading = false;
         });
       }
-      
       myChart.on('click', function (params) {
         console.log(params);
       });

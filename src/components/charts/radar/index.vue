@@ -1,5 +1,7 @@
 <template>
-  <div class="chart-radar">
+  <div class="wrap">
+    <div class="chart-radar"></div>
+    <loading :show="show_loading"></loading>
   </div>
 </template>
 
@@ -13,16 +15,21 @@ import loading from '../../common/loading';
 
 import { option, get_max_data } from './model';
 export default {
+  data() {
+    return {
+      show_loading: true,
+    }
+  },
   mounted () {
     get_max_data(this.$route.params.name, this.init_chart);
-    // this.init_chart();
   },
   methods: {
     init_chart: function() {
       const myChart = echarts.init(document.querySelector('.chart-radar'));
       console.log(option);
       myChart.setOption(option);
-    }
+      this.show_loading = false;
+    },
   },
   components: {
     loading,

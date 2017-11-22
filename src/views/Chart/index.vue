@@ -4,14 +4,14 @@
     <div class="main-body">
       <div class="left-area">
         <div class="small-chart-wrap">
-          <chart-radar></chart-radar>
+          <chart-radar  :name="company_name"></chart-radar>
         </div>
         <div class="small-chart-wrap">
-          <chart-line></chart-line>
+          <chart-line :name="company_name"></chart-line>
         </div>
       </div>
       <div class="right-area">
-        <chart-cross></chart-cross>
+        <chart-cross :change_company="change_company" :name="company_name"></chart-cross>
       </div>
     </div>
     <footer-component></footer-component>
@@ -32,6 +32,16 @@ export default {
     chartLine,
     chartCross,
     chartRadar,
+  },
+  data () {
+    return {
+      company_name: undefined,
+    }
+  },
+  methods: {
+    change_company: function(name) {
+      this.company_name = name;
+    }
   }
 }
 </script>

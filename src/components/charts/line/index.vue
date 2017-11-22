@@ -23,17 +23,25 @@ export default {
       show_loading: true,
     }
   },
+  props: {
+    name: {
+      type: String,
+    }
+  },
   mounted () {
     this.show_loading = true;
-    this.init_chart();
+    this.init_chart(this.$route.params.name);
+  },
+  beforeUpdate() {
+    this.init_chart(this.name || this.$route.params.name);
   },
   components: {
     loading,
   },
   methods: {
-    init_chart: function() {
+    init_chart: function(name) {
       this.chart = echarts.init(document.querySelector('.chart-line'));
-      get_data(this.$route.params.name, (option) => {
+      get_data(name, (option) => {
         this.chart.setOption(option);
         this.show_loading = false;
       });

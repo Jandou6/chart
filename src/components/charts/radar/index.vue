@@ -20,13 +20,20 @@ export default {
       show_loading: true,
     }
   },
+  props: {
+    name: {
+      type: String,
+    }
+  },
   mounted () {
     get_max_data(this.$route.params.name, this.init_chart);
+  },
+  beforeUpdate() {
+    get_max_data(this.name || this.$route.params.name, this.init_chart);
   },
   methods: {
     init_chart: function() {
       const myChart = echarts.init(document.querySelector('.chart-radar'));
-      console.log(option);
       myChart.setOption(option);
       this.show_loading = false;
     },

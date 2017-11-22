@@ -151,4 +151,15 @@ function fetch_data(url, body, success_fn) {
   })
 }
 
+export function change_company(name) {
+  option.series.forEach((item) => {
+    if (item.name === name) {
+      item.itemStyle.normal.color = '#f00';
+    } else {
+      item.itemStyle.normal.color = '#B3E4A1';
+    }
+  });
+  return option;
+}
+
 

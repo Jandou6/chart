@@ -1,7 +1,7 @@
 {
   "name": "chart",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "base Vue.js , stork chart",
   "author": "jandou <809781809@qq.com>",
   "private": true,
   "scripts": {

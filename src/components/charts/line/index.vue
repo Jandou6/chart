@@ -1,6 +1,7 @@
 <template>
-  <div class="chart-line">
-
+  <div class="wrap">
+    <div class="chart-line"></div>
+    <loading :show="show_loading"></loading>
   </div>
 </template>
 
@@ -10,18 +11,43 @@ var echarts = require('echarts/lib/echarts');
 require('echarts/lib/chart/line');
 require('echarts/lib/component/tooltip');
 require('echarts/lib/component/title');
+require('echarts/lib/component/legend'); //visualMap
+require('echarts/lib/component/visualMap');
+import { get_data } from './model';
+import loading from '../../common/loading';
 
-import { option } from './model';
 export default {
+  data() {
+    return {
+      chart: undefined,
+      show_loading: true,
+    }
+  },
+  props: {
+    name: {
+      type: String,
+    }
+  },
   mounted () {
-    this.init_chart();
+    this.show_loading = true;
+    this.init_chart(this.$route.params.name);
+  },
+  beforeUpdate() {
+    this.init_chart(this.name || this.$route.params.name);
+  },
+  components: {
+    loading,
   },
   methods: {
-    init_chart: function() {
-      const myChart = echarts.init(document.querySelector('.chart-line'));
-      myChart.setOption(option);
+    init_chart: function(name) {
+      this.chart = echarts.init(document.querySelector('.chart-line'));
+      get_data(name, (option) => {
+        this.chart.setOption(option);
+        this.show_loading = false;
+      });
     }
   }
+  
 }
 </script>
 

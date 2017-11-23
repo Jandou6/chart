@@ -6,8 +6,15 @@
   .mian-body {
     flex:1;
     font-size: 5vw;
+    display: flex;
+    flex-wrap: wrap;
     #welcome-title {
       color: #fff;
+      height:100px;
+      padding:10px;
+    }
+    .link-wrap {
+      width: 100%;
       .link-to-search {
         color: #fff;
         &:hover {

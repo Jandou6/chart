@@ -3,7 +3,12 @@
     <div class="body">
       <header-component></header-component>
       <div class="mian-body vh-center">
-        <h4 id="welcome-title"></h4>
+        <div class="content">
+          <h4 id="welcome-title"></h4>
+          <div class="link-wrap">
+            <router-link to='/search' class="link-to-search">Click Here</router-link>
+          </div>
+        </div>
       </div>
       <footer-component></footer-component>
     </div>
@@ -30,9 +35,9 @@ export default {
   },
   mounted () {
     var options = {
-      strings: ['Welcome', `<a href="#/search" class="link-to-search">Click Here</a>`],
+      strings: ['Welcome'],
       showCursor: false,
-      typeSpeed: 80
+      typeSpeed: 60
     }
   const typed = new Typed('#welcome-title', options);
   }

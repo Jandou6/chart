@@ -4,20 +4,14 @@
     <div class="main-body">
       <div class="left-area">
         <div class="small-chart-wrap">
-          <chart-bar></chart-bar>
+          <chart-radar  :name="company_name"></chart-radar>
         </div>
         <div class="small-chart-wrap">
-          <chart-line></chart-line>
-        </div>
-        <div class="small-chart-wrap">
-          <chart-fan></chart-fan>
-        </div>
-        <div class="small-chart-wrap">
-          <chart-radar></chart-radar>
+          <chart-line :name="company_name"></chart-line>
         </div>
       </div>
       <div class="right-area">
-        <chart-cross></chart-cross>
+        <chart-cross :change_company="change_company" :name="company_name"></chart-cross>
       </div>
     </div>
     <footer-component></footer-component>
@@ -26,9 +20,7 @@
 
 <script>
 import './index.scss';
-import chartBar from '../../components/charts/bar';
 import chartLine from '../../components/charts/line';
-import chartFan from '../../components/charts/fan';
 import chartCross from '../../components/charts/cross';
 import chartRadar from '../../components/charts/radar';
 import headerComponent from '../../components/common/header';
@@ -36,12 +28,20 @@ import footerComponent from '../../components/common/footer';
 export default {
   components: {
     headerComponent,
-    chartBar,
     footerComponent,
     chartLine,
-    chartFan,
     chartCross,
     chartRadar,
+  },
+  data () {
+    return {
+      company_name: undefined,
+    }
+  },
+  methods: {
+    change_company: function(name) {
+      this.company_name = name;
+    }
   }
 }
 </script>

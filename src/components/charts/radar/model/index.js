@@ -8,7 +8,7 @@ export const option = {
       color: '#fff',
     }
   },
-  // tooltip: {},
+  tooltip: {},
   // legend: {
   //   data: ['预算分配（Allocated Budget）', '实际开销（Actual Spending）']
   // },
@@ -44,11 +44,10 @@ export const option = {
     ]
   },
   series: [{
-    name: '预算 vs 开销（Budget vs spending）',
     type: 'radar',
     data: [{
         value: [4300, 10000, 28000, 35000, 50000, 19000],
-        name: '预算分配（Allocated Budget）',
+        // name: '预算分配（Allocated Budget）',
         lineStyle: {
           normal: {
             color: '#00ff00'

@@ -1,6 +1,6 @@
 <template>
   <div class="loading-wrap vh-center" :style="{display: show ? '' : 'none'}">
-    <svg viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- <svg viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <g id="circle" class="g-circles g-circles--v1">
         <circle id="12" transform="translate(35, 16.698730) rotate(-30) translate(-35, -16.698730) " cx="35" cy="16.6987298" r="10"></circle>
         <circle id="11" transform="translate(16.698730, 35) rotate(-60) translate(-16.698730, -35) " cx="16.6987298" cy="35" r="10"></circle>
@@ -16,11 +16,13 @@
         <circle id="1" cx="60" cy="10" r="10"></circle>
       </g>
       <use xlink:href="#circle" class="use"/>
-    </svg>
+    </svg> -->
+    <moon-loader :loading="loading" :color="color" :size="size"></moon-loader>
   </div>
 </template>
 
 <script>
+import MoonLoader from 'vue-spinner/src/MoonLoader.vue'
 import './index.scss';
 export default {
   props: {
@@ -28,6 +30,9 @@ export default {
       type: Boolean,
       default: true,
     }
+  },
+  components: {
+     MoonLoader,
   }
 }
 </script>

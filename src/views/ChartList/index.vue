@@ -7,7 +7,7 @@
           <template v-for="(chart, index) in chart_list">
             <li :key="index" class="list-item-wrap">
               <div class="chart-item vh-center">
-                <router-link :to="{ name: chart.link, params: { name:companyName}}">
+                <router-link class="vh-center" :to="{ name: chart.link, params: { name:companyName}}">
                    {{chart.name}}
                 </router-link>
               </div>

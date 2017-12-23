@@ -14,13 +14,13 @@ export const option = {
   textStyle: {
     color: '#ffffff',
   },
-  legend: {
-    data:['开盘价','收盘价'],
-    textStyle: {
-      color: '#fff',
-      fontSize: 14
-    },
-  },
+  // legend: {
+  //   data:['开盘价','收盘价'],
+  //   textStyle: {
+  //     color: '#fff',
+  //     fontSize: 14
+  //   },
+  // },
   visualMap: [{
     show: false,
     type: 'continuous',
@@ -91,3 +91,29 @@ export function get_data(stock_name='盛通股份', success_fn) {
   });
 }
 
+export function get_gbi_data(success_fn) {
+  const url = `${Api_config.host}:${Api_config.port}${Api_config.get_gbi_data}`;
+  const res = axios.get(url).then((res) => {
+    const list = pick_gbi_data(res.data);
+    const dateList = list.date;
+    const valueList = list.value
+    option.xAxis[0].data = dateList;
+    option.series[0].data = valueList;
+    option.series[0].name = 'gbi数据';
+    option.series[1].data = undefined;
+    option.title[0].text = `GBI折线图`;
+    success_fn(option);
+  });
+}
+
+function pick_gbi_data(data_arr) {
+  const list = {
+    date: [],
+    value: [],
+  };
+  data_arr.forEach((data, index) => {
+    list.date.push(data.Date);
+    list.value.push(data.GBI);
+  })
+  return list;
+}

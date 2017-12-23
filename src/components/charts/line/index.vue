@@ -13,7 +13,7 @@ require('echarts/lib/component/tooltip');
 require('echarts/lib/component/title');
 require('echarts/lib/component/legend'); //visualMap
 require('echarts/lib/component/visualMap');
-import { get_data } from './model';
+import { get_data, get_gbi_data } from './model';
 import loading from '../../common/loading';
 
 export default {
@@ -30,10 +30,18 @@ export default {
   },
   mounted () {
     this.show_loading = true;
-    this.init_chart(this.$route.params.name);
+    if(this.$route.name == 'gbi_line') {
+      this.init_gbi_chart();
+    } else {
+      this.init_chart(this.$route.params.name);
+    }
   },
   beforeUpdate() {
-    this.init_chart(this.name || this.$route.params.name);
+     if(this.$route.name == 'gbi_line') {
+      this.init_gbi_chart();
+    } else {
+      this.init_chart(this.name || this.$route.params.name);
+    }
   },
   components: {
     loading,
@@ -45,12 +53,15 @@ export default {
         this.chart.setOption(option);
         this.show_loading = false;
       });
+    },
+    init_gbi_chart: function() {
+      this.chart = echarts.init(document.querySelector('.chart-line'));
+      get_gbi_data((option) => {
+        this.chart.setOption(option);
+        this.show_loading = false;
+      });
     }
   }
   
 }
 </script>
-
-<style>
-
-</style>

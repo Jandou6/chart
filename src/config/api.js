@@ -12,4 +12,6 @@ export const Api_config = {
   get_max_total_liabilities:        '/data/maxTotalLiabilities',
   get_max_total_profit:             '/data/maxTotalProfit',
   get_max_debt_to_assets_ratio:     '/data/maxDebtToAssetsRatio',
+
+  get_gbi_data: '/gbiIndex',
 }

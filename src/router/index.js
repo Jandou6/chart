@@ -52,6 +52,11 @@ export default new Router({
       path: '/local_cross/:name',
       name: 'local_cross',
       component: Cross
-    }
+    },
+    {
+      path: '/gbi_line/',
+      name: 'gbi_line',
+      component: Line
+    },
   ]
 })

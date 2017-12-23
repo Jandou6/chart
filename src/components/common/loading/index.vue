@@ -1,6 +1,6 @@
 <template>
   <div class="loading-wrap vh-center" :style="{display: show ? '' : 'none'}">
-    <moon-loader :loading="loading" :color="color" :size="size"></moon-loader>
+    <moon-loader></moon-loader>
   </div>
 </template>
 

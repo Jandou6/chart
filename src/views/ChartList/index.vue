@@ -51,6 +51,10 @@ export default {
         {
           name: '全局散点图',
           link: 'cross',
+        },
+        {
+          name: 'GBI折线图',
+          link: 'gbi_line',
         }
       ]
     }
